@@ -1,7 +1,16 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+Admin.create([
+  { email: 'huw@example.com', password: 'password' },
+  { email: 'admin@example.com', password: 'password' },
+  { email: 'laura@example.com', password: 'password' },
+])
+
+indonesia = Country.create(name: 'Indonesia')
+libya = Country.create(name: 'Libya')
+
+ind_community_1 = indonesia.communities.create(name: 'Indonesia 1', location: "Jakarta")
+ind_community_2 = indonesia.communities.create(name: 'Indonesia 2', location: "Sumatra")
+
+
+2.times do
+  ind_community_1.children.create(name: Faker::Name.name)
+end
