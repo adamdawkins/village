@@ -10,6 +10,22 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <% if sponsor_signed_in? %>
+                <%= link_to "Log out", destroy_sponsor_session_path, method: :delete, class: "nav-link" %>
+              <% else %>
+                <%= link_to "Sign In", new_sponsor_session_path, class: "nav-link" %>
+              <% end %>
+            </li>
+        </ul>
+    </nav>
     <%= yield %>
   </body>
 </html>
