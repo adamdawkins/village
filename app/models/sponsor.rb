@@ -8,4 +8,8 @@ class Sponsor < ApplicationRecord
   has_one :child, through: :sponsorship
   has_many :posts, as: :authorable
   has_one :bank_detail
+
+  def feed
+    [posts.select {|p| p.persisted? }, child.posts, child.community.staff.collect(&:posts)].flatten
+  end
 end

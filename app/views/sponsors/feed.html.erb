@@ -1,7 +1,18 @@
 <div class="container pt-5">
   <div class="row">
     <div class="col-md-6">
+      <div class="card">
+      
+        <div class="card-body">
+          <h3><%= current_sponsor.child.name %></h3> 
+          <div class="card-actions">
+            <%= link_to "View profile", current_sponsor.child %>
+          </div>
+        </div>
+      </div>
       <h2>Community Feed</h2>
+      <%= render 'posts/form', post: current_sponsor.posts.build %>
+      <%= render current_sponsor.feed %>
     </div>
   </div>
 </div>

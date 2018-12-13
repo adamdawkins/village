@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @post.content %>
+</p>
+
+<p>
+  <strong>Authorable:</strong>
+  <%= @post.authorable.name %>
+</p>
+
+<%= link_to 'Edit', edit_admins_post_path(@post) %> |
+<%= link_to 'Back', admins_posts_path %>

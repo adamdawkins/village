@@ -1,0 +1,7 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">[<%= post.id %>]<%= post.title %> - <%= post.persisted? %></h4> 
+    <p><%= post.title %></p> 
+    <p>by <%= post.authorable.name %>
+  </div>
+</div>
