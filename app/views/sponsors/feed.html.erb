@@ -11,7 +11,21 @@
         </div>
       </div>
       <h2>Community Feed</h2>
-      <%= render 'posts/form', post: current_sponsor.posts.build %>
+      <%= simple_form_for current_sponsor.posts.build do |f|%>
+        <%= f.error_notification %>
+        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+        <div class="form-inputs">
+          <%= f.input :title %>
+          <%= f.input :content, as: :text %>
+    <%= f.input :authorable_id, :input_html => { :value => current_sponsor.id }, :as => :hidden %>
+    <%= f.input :authorable_type, :input_html => { :value => 'Child' }, :as => :hidden %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, class: "btn-primary" %>
+        </div>
+<% end %>
       <%= render current_sponsor.feed %>
     </div>
   </div>
