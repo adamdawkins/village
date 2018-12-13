@@ -7,4 +7,5 @@ class Sponsor < ApplicationRecord
   has_one :sponsorship
   has_one :child, through: :sponsorship
   has_many :posts, as: :authorable
+  has_one :bank_detail
 end
