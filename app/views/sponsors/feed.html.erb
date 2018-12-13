@@ -1,31 +1,44 @@
-<div class="container pt-5">
-  <div class="row">
-    <div class="col-md-6">
-      <div class="card">
-      
+<div class="">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card mb-4">
         <div class="card-body">
-          <h3><%= current_sponsor.child.name %></h3> 
+          <div class="media mb-3">
+            <div class="col-3">
+            <%= image_tag "child.png", class: "align-self-start mr-2 img-fluid rounded-circle" %>
+            </div>
+            <div class="col-9">
+              <div class="media-body">
+                <h5 class="mt-0"><%= current_sponsor.child.name %></h5>
+                <p>Lives in <%= current_sponsor.child.community.country.name %></p>
+              </div>
+            </div>
+          </div>
           <div class="card-actions">
-            <%= link_to "View profile", current_sponsor.child %>
+            <%= link_to "View profile", current_sponsor.child, class: "btn btn-primary" %>
           </div>
         </div>
       </div>
-      <h2>Community Feed</h2>
-      <%= simple_form_for current_sponsor.posts.build do |f|%>
-        <%= f.error_notification %>
-        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+      <div class="row mb-5">
+        <div class="col">
+          <h2>Community Feed</h2>
+          <%= simple_form_for current_sponsor.posts.build do |f|%>
+            <%= f.error_notification %>
+            <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-        <div class="form-inputs">
-          <%= f.input :title %>
-          <%= f.input :content, as: :text %>
-    <%= f.input :authorable_id, :input_html => { :value => current_sponsor.id }, :as => :hidden %>
-    <%= f.input :authorable_type, :input_html => { :value => 'Child' }, :as => :hidden %>
-        </div>
+            <div class="form-inputs">
+              <%= f.input :title %>
+              <%= f.input :content, as: :text %>
+              <%= f.input :authorable_id, :input_html => { :value => current_sponsor.id }, :as => :hidden %>
+              <%= f.input :authorable_type, :input_html => { :value => 'Sponsor' }, :as => :hidden %>
+            </div>
 
-        <div class="form-actions">
-          <%= f.button :submit, class: "btn-primary" %>
+            <div class="form-actions">
+              <%= f.button :submit, class: "btn-primary" %>
+            </div>
+          <% end %>
         </div>
-<% end %>
+      </div>
       <%= render current_sponsor.feed %>
     </div>
   </div>

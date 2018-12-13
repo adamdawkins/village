@@ -1,7 +1,8 @@
-<div class="card">
+<div class="card mb-5">
   <div class="card-body">
-    <h4 class="card-title">[<%= post.id %>]<%= post.title %> - <%= post.persisted? %></h4> 
+    <h4 class="card-title"><%= post.title %></h4> 
+    <span class="text-muted"><%= time_ago_in_words post.created_at %> ago</span>
     <p><%= post.title %></p> 
-    <p>by <%= post.authorable.name %>
+    <p><strong>by <%= post.authorable.name %> (<%= post.authorable.class %>)</strong></p>
   </div>
 </div>

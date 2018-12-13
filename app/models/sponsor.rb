@@ -10,6 +10,6 @@ class Sponsor < ApplicationRecord
   has_one :bank_detail
 
   def feed
-    [posts.select {|p| p.persisted? }, child.posts, child.community.staff.collect(&:posts)].flatten
+    [posts.select {|p| p.persisted? }, child.posts, child.community.staff.collect(&:posts)].flatten.sort_by(&:created_at).reverse
   end
 end
