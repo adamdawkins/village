@@ -1,7 +1,18 @@
-# Sensible Rails defaults
-The gems I add to every app.
-
 # Getting Started
-`git clone https://github.com/adamdawkins/rails-on-rails app_name`
 
-Edit the database names in `/config/database.yml`
+## Dependencies
+* Postgres
+* Ruby
+* Bundler
+
+## Start
+
+```
+bundle install
+rails db:create
+rails db:migrate
+rails db:seed
+
+rails start
+```
+
